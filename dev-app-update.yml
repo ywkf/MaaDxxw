@@ -1,0 +1,7 @@
+provider: generic
+# 这里的更新url需要更改成你自己的
+# url: https://github.com/ywkf/MFW-ELE-GUI/blob/master/src/main/autoUpdater.ts
+# updaterCacheDirName: mma-gui-updater
+provider: github
+owner: ywkf
+repo: MaaDxxw

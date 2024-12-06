@@ -1,0 +1,57 @@
+appId: com.ywkf.MaaDxxw
+productName: MaaDxxw
+icon: resources\icon.png
+directories:
+  buildResources: build
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md,res.zip}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+extraResources:
+  - from: 'resources/model'
+    to: 'model'
+asar: true
+# asarUnpack:
+#   - resources/**
+#   - '!resources/resource_picli'
+win:
+  target:
+    - target: nsis
+nsis:
+  oneClick: false
+  perMachine: true
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+mac:
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+dmg:
+  artifactName: ${name}-${version}.${ext}
+linux:
+  target:
+    - AppImage
+    - snap
+    - deb
+  maintainer: electronjs.org
+  category: Utility
+appImage:
+  artifactName: ${name}-${version}.${ext}
+npmRebuild: false
+publish:
+  # provider: generic
+  # # 这里的更新url需要更改成你自己的
+  # url: https://github.com/ywkf/MFW-ELE-GUI/blob/master/src/main/autoUpdater.ts
+  # updaterCacheDirName: m5a-gui-updater
+  provider: github
+  owner: ywkf
+  repo: MaaDxxw
